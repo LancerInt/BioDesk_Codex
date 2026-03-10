@@ -28,7 +28,3 @@
 7. **No binary app assets in repo**
    - Removed icon/splash PNG files and kept `app.json` minimal to avoid PR tooling failures that reject binary files.
    - Expo can still run with default generated assets in development.
-
-8. **Graceful startup + search fallback**
-   - Wrapped DB bootstrap in app-level readiness/error UI so users no longer see a blank screen if local DB init fails.
-   - Added fallback `LIKE` search when FTS5 is unavailable on a runtime/device.

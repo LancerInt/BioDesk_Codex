@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { databaseSupportsFts, getProducts, searchProducts } from '../db/database';
+import { getProducts, searchProducts } from '../db/database';
 
 export default function ProductsScreen({ navigation }) {
   const [query, setQuery] = useState('');
@@ -23,9 +23,6 @@ export default function ProductsScreen({ navigation }) {
         onChangeText={onSearch}
         style={styles.searchInput}
       />
-      {!databaseSupportsFts() ? (
-        <Text style={styles.infoText}>FTS not available on this device; using fallback text search.</Text>
-      ) : null}
       <FlatList
         data={products}
         keyExtractor={(item) => String(item.id)}
@@ -81,9 +78,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 40,
     color: '#6b7280',
-  },
-  infoText: {
-    marginBottom: 10,
-    color: '#92400e',
   },
 });
